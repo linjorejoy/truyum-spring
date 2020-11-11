@@ -22,10 +22,6 @@ public class MenuItemServiceTest {
     public void initializeService() {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         menuItemService = context.getBean(MenuItemService.class);
-//        for(MenuItem item : menuItemService.getMenuItemListAdmin()) {
-//            System.out.println(item);
-//        }
-//        System.out.println("-----------");
     }
     
     @Test

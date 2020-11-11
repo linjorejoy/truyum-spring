@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
@@ -15,10 +16,8 @@ import com.cognizant.truyum.model.MenuItem;
 @Component
 public class CartDaoCollectionImpl implements CartDao {
 
-    ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
     
-    
-    private Map<Long, Cart> userCarts = (HashMap<Long,Cart>) context.getBean("menuItemListCartHashMap");
+    private Map<Long, Cart> userCarts;
 
     public Map<Long, Cart> getUserCarts() {
         return userCarts;
@@ -52,7 +51,7 @@ public class CartDaoCollectionImpl implements CartDao {
 
         Cart cart = userCarts.get(userId);
         List<MenuItem> allCartItems = cart.getMenuItemList();
-        if (allCartItems.isEmpty()) {
+        if (allCartItems.isEmpty() || allCartItems == null) {
             throw new CartEmptyException();
         } else {
             double total = 0;
