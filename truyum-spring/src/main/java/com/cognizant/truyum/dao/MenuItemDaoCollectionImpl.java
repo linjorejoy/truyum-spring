@@ -4,94 +4,68 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.cognizant.truyum.model.MenuItem;
 import com.cognizant.truyum.util.DateUtil;
 
+@Component
 public class MenuItemDaoCollectionImpl implements MenuItemDao {
 
-	private static List<MenuItem> menuItemList;
+    private List<MenuItem> menuItemList;
 
-	public MenuItemDaoCollectionImpl() {
-		super();
-		List<MenuItem> newList = new ArrayList<>();
-		if (menuItemList == null) {
-			
-			// Including Sample Data
-			
-			newList.add(new MenuItem(1, "Sandwich", 99.0f, true, new DateUtil().convertToDate("15/03/2017"),
-					"Main Course", true));
-			newList.add(new MenuItem(2, "Burger", 129.0f, true, new DateUtil().convertToDate("23/12/2017"),
-					"Main Course", false));
-			newList.add(new MenuItem(3, "Pizza", 149.0f, true, new DateUtil().convertToDate("21/08/2018"),
-					"Main Course", false));
-			newList.add(new MenuItem(4, "French Fries", 57.0f, false, new DateUtil().convertToDate("02/07/2017"),
-					"Starters", true));
-			newList.add(new MenuItem(5, "Chocolate Brownie", 32.0f, true, new DateUtil().convertToDate("02/11/2022"),
-					"Dessert", true));
-			
-		}
-		menuItemList = newList;
-	}
+    public List<MenuItem> getMenuItemList() {
 
-	public MenuItemDaoCollectionImpl(List<MenuItem> menuItemList) {
+        return menuItemList;
+    }
 
-		super();
-		MenuItemDaoCollectionImpl.menuItemList = menuItemList;
-	}
+    public void setMenuItemList(List<MenuItem> menuItemList) {
 
-	public List<MenuItem> getMenuItemList() {
+        this.menuItemList = menuItemList;
+    }
 
-		return menuItemList;
-	}
+    public List<MenuItem> getMenuItemListAdmin() {
 
-	public void setMenuItemList(List<MenuItem> menuItemList) {
+        return menuItemList;
+    }
 
-		MenuItemDaoCollectionImpl.menuItemList = menuItemList;
-	}
+    public List<MenuItem> getMenuItemListCustomer() {
+        List<MenuItem> customerItemList = new ArrayList<>();
+        Date currDate = new DateUtil().convertToDate("20/10/2020");
 
-	public List<MenuItem> getMenuItemListAdmin() {
+        for (MenuItem item : menuItemList) {
+            if (item.isActive() && currDate.after(item.getDateOfLaunch())) {
+                customerItemList.add(item);
+            }
+        }
+        return customerItemList;
+    }
 
-		return menuItemList;
-	}
+    public void modifyMenuItem(MenuItem menuItem) {
 
-	
-	public List<MenuItem> getMenuItemListCustomer() {
-		List<MenuItem> customerItemList = new ArrayList<>();
-		Date currDate = new DateUtil().convertToDate("20/10/2020");
-		
-		for(MenuItem item : menuItemList) {
-			if(item.isActive() && currDate.after(item.getDateOfLaunch())){
-				customerItemList.add(item);
-			}
-		}
-		return customerItemList;
-	}
+        for (MenuItem eachItem : menuItemList) {
+            if (menuItem.equals(eachItem)) {
+                eachItem.setId(menuItem.getId());
+                eachItem.setName(menuItem.getName());
+                eachItem.setPrice(menuItem.getPrice());
+                eachItem.setActive(menuItem.isActive());
+                eachItem.setDateOfLaunch(menuItem.getDateOfLaunch());
+                eachItem.setCategory(menuItem.getCategory());
+                eachItem.setFreeDelivery(menuItem.isFreeDelivery());
+                return;
+            }
+        }
+        menuItemList.add(menuItem);
+    }
 
-	public void modifyMenuItem(MenuItem menuItem) {
+    public MenuItem getMenuItem(long menuItemId) {
 
-		for (MenuItem eachItem : menuItemList) {
-			if (menuItem.equals(eachItem)) {
-				eachItem.setId(menuItem.getId());
-				eachItem.setName(menuItem.getName());
-				eachItem.setPrice(menuItem.getPrice());
-				eachItem.setActive(menuItem.isActive());
-				eachItem.setDateOfLaunch(menuItem.getDateOfLaunch());
-				eachItem.setCategory(menuItem.getCategory());
-				eachItem.setFreeDelivery(menuItem.isFreeDelivery());
-				return;
-			}
-		}
-		menuItemList.add(menuItem);
-	}
+        for (MenuItem menuItem : menuItemList) {
+            if (menuItem.getId() == menuItemId) {
+                return menuItem;
+            }
+        }
+        return null;
+    }
 
-	public MenuItem getMenuItem(long menuItemId) {
-
-		for (MenuItem menuItem : menuItemList) {
-			if (menuItem.getId() == menuItemId) {
-				return menuItem;
-			}
-		}
-		return null;
-	}
-	
 }

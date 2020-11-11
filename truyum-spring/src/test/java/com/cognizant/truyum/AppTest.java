@@ -1,4 +1,4 @@
-package com.cognizant.truyum.truyum_spring;
+package com.cognizant.truyum;
 
 import static org.junit.Assert.assertTrue;
 

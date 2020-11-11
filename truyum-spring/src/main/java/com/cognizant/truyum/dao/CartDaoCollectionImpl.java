@@ -1,99 +1,84 @@
-/**
- * This method wiill
- */
 package com.cognizant.truyum.dao;
 
 import java.util.ArrayList;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
+
 import com.cognizant.truyum.model.Cart;
 import com.cognizant.truyum.model.MenuItem;
-/**
- * 
- * @author LINJO
- *
- */
+
+@Component
 public class CartDaoCollectionImpl implements CartDao {
-	/**
-	 * 
-	 */
-	private static Map<Long, Cart> userCarts;
-	
-	/**
-	 * 
-	 */
-	public CartDaoCollectionImpl() {
-		super();
-		if (userCarts == null) {
-			userCarts = new HashMap<Long, Cart>();
-		}
-	}
-	/**
-	 * 
-	 * @return
-	 */
-	public Map<Long, Cart> getUserCarts() {
-		return userCarts;
-	}
-	
-	public void setUserCarts(Map<Long, Cart> userCarts) {
-		CartDaoCollectionImpl.userCarts = userCarts;
-	}
 
-	@Override
-	public void addCartItem(long userId, long menuItemId) {
+    ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+    
+    
+    private Map<Long, Cart> userCarts = (HashMap<Long,Cart>) context.getBean("menuItemListCartHashMap");
 
-		MenuItemDao menuItemDao = new MenuItemDaoCollectionImpl();
-		MenuItem item = menuItemDao.getMenuItem(menuItemId);
+    public Map<Long, Cart> getUserCarts() {
+        return userCarts;
+    }
 
-		if (userCarts.containsKey(userId)) {
-			List<MenuItem> menuItemList = userCarts.get(userId).getMenuItemList();
-			menuItemList.add(item);
-			userCarts.get(userId).setMenuItemList(menuItemList);
-		} else {
-			List<MenuItem> newUserMenuList = new ArrayList<>();
-			newUserMenuList.add(item);
-			Cart cart = new Cart(newUserMenuList);
-			userCarts.put(userId, cart);
-		}
+    public void setUserCarts(Map<Long, Cart> userCarts) {
+        this.userCarts = userCarts;
+    }
 
-	}
+    @Override
+    public void addCartItem(long userId, long menuItemId) {
 
-	@Override
-	public List<MenuItem> getAllCartItems(long userId) throws CartEmptyException {
-		
-		Cart cart = userCarts.get(userId);
-		List<MenuItem> allCartItems = cart.getMenuItemList();
-		if (allCartItems.isEmpty()) {
-			throw new CartEmptyException();
-		} else {
-			double total = 0;
-			for (MenuItem item : allCartItems) {
-				total += item.getPrice();
-			}
-			cart.setTotal(total);
-		}
-		return allCartItems;
-	}
+        MenuItemDao menuItemDao = new MenuItemDaoCollectionImpl();
+        MenuItem item = menuItemDao.getMenuItem(menuItemId);
 
-	@Override
-	public void removeCartItem(long userId, long menuItemId) {
-		
-		Cart cart = userCarts.get(userId);
-		List<MenuItem> allCartItems = cart.getMenuItemList();
-		MenuItem itemToRemove = null;
+        if (userCarts.containsKey(userId)) {
+            List<MenuItem> menuItemList = userCarts.get(userId).getMenuItemList();
+            menuItemList.add(item);
+            userCarts.get(userId).setMenuItemList(menuItemList);
+        } else {
+            List<MenuItem> newUserMenuList = new ArrayList<>();
+            newUserMenuList.add(item);
+            Cart cart = new Cart(newUserMenuList);
+            userCarts.put(userId, cart);
+        }
 
-		for (MenuItem item : allCartItems) {
-			if (item.getId() == menuItemId) {
-				itemToRemove = item;
-				break;
-			}
-		}
-		allCartItems.remove(itemToRemove);
-		cart.setMenuItemList(allCartItems);
-		userCarts.put(userId, cart);
-	}
+    }
+
+    @Override
+    public List<MenuItem> getAllCartItems(long userId) throws CartEmptyException {
+
+        Cart cart = userCarts.get(userId);
+        List<MenuItem> allCartItems = cart.getMenuItemList();
+        if (allCartItems.isEmpty()) {
+            throw new CartEmptyException();
+        } else {
+            double total = 0;
+            for (MenuItem item : allCartItems) {
+                total += item.getPrice();
+            }
+            cart.setTotal(total);
+        }
+        return allCartItems;
+    }
+
+    @Override
+    public void removeCartItem(long userId, long menuItemId) {
+
+        Cart cart = userCarts.get(userId);
+        List<MenuItem> allCartItems = cart.getMenuItemList();
+        MenuItem itemToRemove = null;
+
+        for (MenuItem item : allCartItems) {
+            if (item.getId() == menuItemId) {
+                itemToRemove = item;
+                break;
+            }
+        }
+        allCartItems.remove(itemToRemove);
+        cart.setMenuItemList(allCartItems);
+        userCarts.put(userId, cart);
+    }
 }
