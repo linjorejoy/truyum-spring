@@ -14,21 +14,21 @@ public interface MenuItemDao {
     /**
      * To get all the menu items in the view of Admin
      * 
-     * @return
+     * @return {@code List{@code MenuItem}}
      */
     List<MenuItem> getMenuItemListAdmin();
 
     /**
      * To get all the menu items in the view of Customer
      * 
-     * @return
+     * @return {@code List{@code MenuItem}}
      */
     List<MenuItem> getMenuItemListCustomer();
 
     /**
      * To Modify any menu item present in the MenuItemList
      * 
-     * @param menuItem
+     * @param menuItem type : {@code MenuItem}
      */
     void modifyMenuItem(MenuItem menuItem);
 
@@ -36,7 +36,7 @@ public interface MenuItemDao {
      * To return any menu Item from the Menu Item List
      * 
      * @param menuItemId
-     * @return
+     * @return {@code MenuItem}
      */
     MenuItem getMenuItem(long menuItemId);
 

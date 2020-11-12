@@ -1,7 +1,6 @@
 package com.cognizant.truyum.dao;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -59,9 +58,9 @@ public class CartDaoCollectionImpl implements CartDao {
     /**
      * Add {@code MenuItem} with Id : menuItemId to the cart of User with User Id :
      * userId
-     * 
+     * {@link #addCartItem}
      * @param userId     : user Id
-     * @param menuItemId : Menu Item Id
+     * @param menuItemId : MenuItem Id
      */
     public void addCartItem(final long userId, final long menuItemId) {
 
@@ -83,10 +82,10 @@ public class CartDaoCollectionImpl implements CartDao {
 
     @Override
     /**
-     * 
+     * To get all the { @code MenuItems} from the particular users cart
      * @param userId : User Id specified in HashMap - { @link
      *               CartDaoCollectionImpl#userCarts }
-     * @return List<MenuItems> list of { @code MenuItems} 
+     * @return List<MenuItems> list of { @code MenuItems } 
      */
     public List<MenuItem> getAllCartItems(final long userId) throws CartEmptyException {
 
@@ -106,6 +105,13 @@ public class CartDaoCollectionImpl implements CartDao {
     }
 
     @Override
+    /**
+     * Remove {@code MenuItem} with Id : menuItemId from the cart of User with 
+     * User Id : userId
+     * 
+     * @param userId     : user Id
+     * @param menuItemId : MenuItem Id
+     */
     public void removeCartItem(final long userId, final long menuItemId) {
 
         final Cart cart = userCarts.get(userId);
