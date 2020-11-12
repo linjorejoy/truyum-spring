@@ -9,12 +9,18 @@ import java.util.List;
  *
  */
 public class Cart {
+    
     /**
-     * To hold {@code List{{@code {@link MenuItem}}} of a particular User
+     * To hold {@link java.util.ArrayList} of
+     * {@link com.cognizant.truyum.model.MenuItem} of a particular User
      */
     private List<MenuItem> menuItemList;
+    
+    
     /**
-     * To store the total price of all the {@code {@link MenuItem}} in a {@code Cart}
+     * To store the total price of all the
+     * {@link com.cognizant.truyum.model.MenuItem} in a
+     * {@link com.cognizant.truyum.model.Cart}
      */
     private double total;
 
@@ -27,16 +33,22 @@ public class Cart {
     }
 
     /**
-     * Single Argument Constructor which takes 
-     * @param menuItemList as the parameter 
-     * @param menuItemList      : {@code List{@code {@link MenuItem}}}
+     * Single Argument Constructor which takes
+     * 
+     * @param menuItemList as the parameter
+     * @param menuItemList : {@code List{@code {@link MenuItem}}}
      */
-    public Cart(List<MenuItem> menuItemList) {
+    public Cart(final List<MenuItem> menuItemList) {
         super();
         this.menuItemList = menuItemList;
     }
 
-    public Cart(List<MenuItem> menuItemList, double total) {
+    /**
+     * 2 Argument Constructor
+     * @param menuItemList
+     * @param total
+     */
+    public Cart(final List<MenuItem> menuItemList, final double total) {
         super();
         this.menuItemList = menuItemList;
         this.total = total;
@@ -46,7 +58,7 @@ public class Cart {
         return menuItemList;
     }
 
-    public void setMenuItemList(List<MenuItem> menuItemList) {
+    public void setMenuItemList(final List<MenuItem> menuItemList) {
         this.menuItemList = menuItemList;
     }
 
@@ -54,7 +66,7 @@ public class Cart {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(final double total) {
         this.total = total;
     }
 

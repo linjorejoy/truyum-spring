@@ -25,7 +25,7 @@ public class CartDaoCollectionImpl implements CartDao {
     @Autowired
     @Qualifier("cartDaoMap")
     /**
-     * Hash Map of userCarts
+     * {@link java.util.HashMap} of userCarts
      */
     private Map<Long, Cart> userCarts;
 
@@ -56,9 +56,11 @@ public class CartDaoCollectionImpl implements CartDao {
 
     @Override
     /**
-     * Add {@code MenuItem} with Id : menuItemId to the cart of User with User Id :
+     * Add 
+     * {@code com.cognizant.truyum.dao.MenuItem}
+     * with Id : @param menuItemId to the cart of User with User Id :
      * userId
-     * {@link #addCartItem}
+     * 
      * @param userId     : user Id
      * @param menuItemId : MenuItem Id
      */
@@ -106,8 +108,9 @@ public class CartDaoCollectionImpl implements CartDao {
 
     @Override
     /**
-     * Remove {@code MenuItem} with Id : menuItemId from the cart of User with 
-     * User Id : userId
+     * Remove {@code com.cognizant.truyum.dao.MenuItem} 
+     * with Id : @param menuItemId from the cart of User with 
+     * User Id : @param userId
      * 
      * @param userId     : user Id
      * @param menuItemId : MenuItem Id

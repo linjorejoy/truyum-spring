@@ -9,6 +9,15 @@ import com.cognizant.truyum.service.MenuItemServiceTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({CartServiceTest.class, MenuItemServiceTest.class})
-public class AppTest {
+/**
+ * Test Suite to run all the Tests
+ * from 
+ * {@link com.cognizant.truyum.service.CartServiceTest} and 
+ * {@link com.cognizant.truyum.service.MenuItemServiceTest}
+ * 
+ * @author LINJO
+ *
+ */
+public class ApplicationTest {
     
 }

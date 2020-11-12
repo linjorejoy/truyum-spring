@@ -11,7 +11,9 @@ import java.util.Date;
  */
 public class DateUtil {
     /**
-     * To Convert any String in dd/MM/yyyy format to Date Object
+     * To Convert any String in dd/MM/yyyy format to 
+     * {@link java.util.Date} Object
+     * 
      * @param date
      * @return
      */

@@ -22,6 +22,7 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
 
     @Autowired
     /**
+     * {@link java.util.ArrayList} of {@link com.cognizant.truyum.model.MenuItem}
      * Menu Item List which will be autowired from spring configuration file
      */
     private List<MenuItem> menuItemList;
@@ -52,7 +53,9 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
     }
 
     /**
-     * For getting MenuItem List in view of Administrator
+     * For getting 
+     * {@link java.util.ArrayList} of {@link com.cognizant.truyum.model.MenuItem}
+     * in view of Administrator
      */
     public List<MenuItem> getMenuItemListAdmin() {
 
@@ -60,7 +63,9 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
     }
 
     /**
-     * For getting MenuItem List in view of Customer
+     * For getting 
+     * {@link java.util.ArrayList} of {@link com.cognizant.truyum.model.MenuItem}
+     * in view of Customer
      */
     public List<MenuItem> getMenuItemListCustomer() {
         final List<MenuItem> customerItemList = new ArrayList<>();
@@ -97,7 +102,9 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
     }
 
     /**
-     * To get a menu item from Menu Item List
+     * To get a menu item from 
+     * {@link java.util.ArrayList} of {@link com.cognizant.truyum.model.MenuItem}
+     * 
      * @param menuItemId the Id of the menu Item to be returned
      */
     public MenuItem getMenuItem(final long menuItemId) {

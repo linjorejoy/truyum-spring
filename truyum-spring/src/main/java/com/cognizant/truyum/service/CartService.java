@@ -10,23 +10,58 @@ import com.cognizant.truyum.dao.CartEmptyException;
 import com.cognizant.truyum.model.MenuItem;
 
 @Service
+/**
+ * Service Class to implement all the methods in
+ * {@link com.cognizant.truyum.dao.CartDaoCollectionImpl} class
+ * 
+ * @author LINJO
+ *
+ */
 public class CartService {
-    CartDao cartDao;
-    
-    public List<MenuItem> getAllCartItems(long userId) throws CartEmptyException {
+    /**
+     * An instance to store object of
+     * {@link com.cognizant.truyum.dao.CartDaoCollectionImpl} class
+     * 
+     */
+    private CartDao cartDao;
+
+    /**
+     * This invokes the
+     * {@link com.cognizant.truyum.dao.CartDaoCollectionImpl#getAllCartItems(long)}
+     * and returns the same
+     * 
+     * @param userId
+     * @return
+     * @throws CartEmptyException
+     */
+    public List<MenuItem> getAllCartItems(final long userId) throws CartEmptyException {
         return cartDao.getAllCartItems(userId);
     }
 
     @Autowired
-    public void setCartDao(CartDao cartDao) {
+    public void setCartDao(final CartDao cartDao) {
         this.cartDao = cartDao;
     }
-    
-    public void addCartItem(long userId, long menuItemId) {
+
+    /**
+     * This invokes the
+     * {@link com.cognizant.truyum.dao.CartDaoCollectionImpl#addCartItem(long, long)}
+     * 
+     * @param userId
+     * @param menuItemId
+     */
+    public void addCartItem(final long userId, final long menuItemId) {
         cartDao.addCartItem(userId, menuItemId);
     }
-    
-    public void removeCartitem(long userId, long menuItemId) {
+
+    /**
+     * This invokes the {@link 
+     * com.cognizant.truyum.dao.CartDaoCollectionImpl#removeCartItem(long, long)}
+     * 
+     * @param userId
+     * @param menuItemId
+     */
+    public void removeCartitem(final long userId, final long menuItemId) {
         cartDao.removeCartItem(userId, menuItemId);
     }
 }

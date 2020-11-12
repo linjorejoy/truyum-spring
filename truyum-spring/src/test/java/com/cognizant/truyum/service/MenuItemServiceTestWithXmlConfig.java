@@ -48,14 +48,14 @@ public class MenuItemServiceTestWithXmlConfig {
     
     @Test
     public void testGetMenuItemListCustomerNotContainsFrenchFries() {
-        boolean frenchFriesPresent = false;
+        boolean hasFrenchFries = false;
         for(MenuItem item : menuItemService.getMenuItemListCustomer()) {
             if(item.getName().equalsIgnoreCase("French Fries")) {
-                frenchFriesPresent = true;
+                hasFrenchFries = true;
                 break;
             }
         }
-        assertFalse(frenchFriesPresent);
+        assertFalse(hasFrenchFries);
     }
 
     @Test

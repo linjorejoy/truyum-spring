@@ -47,7 +47,8 @@ public class MenuItem {
     }
 
     /**
-     * 7-Argument constructor to create {@code MenuItem} object
+     * 7-Argument constructor to create 
+     * {@link com.cognizant.truyum.model.MenuItem} object
      * 
      * @param id
      * @param name
@@ -77,7 +78,7 @@ public class MenuItem {
     }
 
     /**
-     * @param id the id to set
+     * @param id : the id to set
      */
     public void setId(final long id) {
         this.id = id;
@@ -177,7 +178,9 @@ public class MenuItem {
 
     @Override
     /**
-     * For comparing 2 {@code MenuItems} and are equated based on their ID
+     * For comparing 2 
+     * {@link com.cognizant.truyum.model.MenuItem}
+     *  and are equated based on their ID
      * 
      * @param obj :
      */
@@ -196,7 +199,7 @@ public class MenuItem {
 
     @Override
     /**
-     * Overridden toString method of Object Class
+     * Overridden toString method of {@link java.lang.Object}
      */
     public String toString() {
         return "MenuItem [id=" + id + ", name=" + name + ", price=" + price + ", active=" + active + ", dateOfLaunch="
