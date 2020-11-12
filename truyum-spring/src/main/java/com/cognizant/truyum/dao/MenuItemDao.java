@@ -12,7 +12,7 @@ import com.cognizant.truyum.model.MenuItem;
 public interface MenuItemDao {
 
     /**
-     * To get all the menu items in the view of Admin
+     * To get all the menu items in the view of Administrator
      * 
      * @return {@code List{@code MenuItem}}
      */
