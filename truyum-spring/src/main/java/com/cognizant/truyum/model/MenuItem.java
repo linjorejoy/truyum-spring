@@ -48,6 +48,7 @@ public class MenuItem {
 
     /**
      * 7-Argument constructor to create {@code MenuItem} object
+     * 
      * @param id
      * @param name
      * @param price
@@ -67,8 +68,6 @@ public class MenuItem {
         this.category = category;
         this.freeDelivery = freeDelivery;
     }
-
-    
 
     /**
      * @return the id
@@ -178,10 +177,9 @@ public class MenuItem {
 
     @Override
     /**
-     * For comparing 2 {@code MenuItems} and are equated 
-     * based on their ID
+     * For comparing 2 {@code MenuItems} and are equated based on their ID
      * 
-     * @param obj : 
+     * @param obj :
      */
     public boolean equals(final Object obj) {
         if (this == obj)
