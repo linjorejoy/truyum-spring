@@ -1,15 +1,13 @@
 package com.cognizant.truyum.dao;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ImportResource;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.cognizant.truyum.model.Cart;
@@ -17,49 +15,87 @@ import com.cognizant.truyum.model.MenuItem;
 
 @Component
 @ImportResource("classpath:spring-config.xml")
+/**
+ * CartDaoImplementation
+ * 
+ * @author LINJO
+ *
+ */
 public class CartDaoCollectionImpl implements CartDao {
 
     @Autowired
     @Qualifier("cartDaoMap")
+    /**
+     * Hash Map of userCarts
+     */
     private Map<Long, Cart> userCarts;
 
     public Map<Long, Cart> getUserCarts() {
         return userCarts;
     }
 
-    public void setUserCarts(Map<Long, Cart> userCarts) {
+    public void setUserCarts(final Map<Long, Cart> userCarts) {
+        this.userCarts = userCarts;
+    }
+
+    /**
+     * A No Argument Constructor
+     */
+    public CartDaoCollectionImpl() {
+        super();
+    }
+
+    /**
+     * Single Argument Constructor to inject Map : userCarts
+     * 
+     * @param userCarts
+     */
+    public CartDaoCollectionImpl(final Map<Long, Cart> userCarts) {
+        super();
         this.userCarts = userCarts;
     }
 
     @Override
-    public void addCartItem(long userId, long menuItemId) {
+    /**
+     * Add {@code MenuItem} with Id : menuItemId to the cart of User with User Id :
+     * userId
+     * 
+     * @param userId     : user Id
+     * @param menuItemId : Menu Item Id
+     */
+    public void addCartItem(final long userId, final long menuItemId) {
 
-        MenuItemDao menuItemDao = new MenuItemDaoCollectionImpl();
-        MenuItem item = menuItemDao.getMenuItem(menuItemId);
+        final MenuItemDao menuItemDao = new MenuItemDaoCollectionImpl();
+        final MenuItem item = menuItemDao.getMenuItem(menuItemId);
 
         if (userCarts.containsKey(userId)) {
-            List<MenuItem> menuItemList = userCarts.get(userId).getMenuItemList();
+            final List<MenuItem> menuItemList = userCarts.get(userId).getMenuItemList();
             menuItemList.add(item);
             userCarts.get(userId).setMenuItemList(menuItemList);
         } else {
-            List<MenuItem> newUserMenuList = new ArrayList<>();
+            final List<MenuItem> newUserMenuList = new ArrayList<>();
             newUserMenuList.add(item);
-            Cart cart = new Cart(newUserMenuList);
+            final Cart cart = new Cart(newUserMenuList);
             userCarts.put(userId, cart);
         }
 
     }
 
     @Override
-    public List<MenuItem> getAllCartItems(long userId) throws CartEmptyException {
+    /**
+     * 
+     * @param userId : User Id specified in HashMap - { @link
+     *               CartDaoCollectionImpl#userCarts }
+     */
+    public List<MenuItem> getAllCartItems(final long userId) throws CartEmptyException {
 
-        Cart cart = userCarts.get(userId);
-        List<MenuItem> allCartItems = cart.getMenuItemList();
-        if (allCartItems.isEmpty() || allCartItems == null) {
+        final Cart cart = userCarts.get(userId);
+        final List<MenuItem> allCartItems = cart.getMenuItemList();
+        if (allCartItems == null || allCartItems.isEmpty()) {
             throw new CartEmptyException();
         } else {
             double total = 0;
-            for (MenuItem item : allCartItems) {
+            for (final MenuItem item : allCartItems) {
                 total += item.getPrice();
             }
 
@@ -69,13 +105,13 @@ public class CartDaoCollectionImpl implements CartDao {
     }
 
     @Override
-    public void removeCartItem(long userId, long menuItemId) {
+    public void removeCartItem(final long userId, final long menuItemId) {
 
-        Cart cart = userCarts.get(userId);
-        List<MenuItem> allCartItems = cart.getMenuItemList();
+        final Cart cart = userCarts.get(userId);
+        final List<MenuItem> allCartItems = cart.getMenuItemList();
         MenuItem itemToRemove = null;
 
-        for (MenuItem item : allCartItems) {
+        for (final MenuItem item : allCartItems) {
             if (item.getId() == menuItemId) {
                 itemToRemove = item;
                 break;
