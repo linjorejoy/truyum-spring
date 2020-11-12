@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -14,9 +16,11 @@ import com.cognizant.truyum.model.Cart;
 import com.cognizant.truyum.model.MenuItem;
 
 @Component
+@ImportResource("classpath:spring-config.xml")
 public class CartDaoCollectionImpl implements CartDao {
 
-    
+    @Autowired
+    @Qualifier("cartDaoMap")
     private Map<Long, Cart> userCarts;
 
     public Map<Long, Cart> getUserCarts() {
@@ -58,6 +62,7 @@ public class CartDaoCollectionImpl implements CartDao {
             for (MenuItem item : allCartItems) {
                 total += item.getPrice();
             }
+
             cart.setTotal(total);
         }
         return allCartItems;
@@ -80,4 +85,5 @@ public class CartDaoCollectionImpl implements CartDao {
         cart.setMenuItemList(allCartItems);
         userCarts.put(userId, cart);
     }
+
 }

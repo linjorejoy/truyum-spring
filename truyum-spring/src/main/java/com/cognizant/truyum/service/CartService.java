@@ -11,13 +11,13 @@ import com.cognizant.truyum.model.MenuItem;
 
 @Service
 public class CartService {
-    @Autowired
     CartDao cartDao;
     
     public List<MenuItem> getAllCartItems(long userId) throws CartEmptyException {
         return cartDao.getAllCartItems(userId);
     }
 
+    @Autowired
     public void setCartDao(CartDao cartDao) {
         this.cartDao = cartDao;
     }

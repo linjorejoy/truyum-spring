@@ -13,8 +13,7 @@ import com.cognizant.truyum.model.MenuItem;
 
 @Service("menuItemService")
 public class MenuItemService {
-    
-    
+
     private MenuItemDao menuItemDao;
 
     @Autowired
@@ -22,25 +21,27 @@ public class MenuItemService {
         this.menuItemDao = menuItemDao;
     }
 
-    public List<MenuItem> getMenuItemListAdmin(){
-        
+    public MenuItemDao getMenuItemDao() {
+        return menuItemDao;
+    }
+
+    public List<MenuItem> getMenuItemListAdmin() {
+
         return menuItemDao.getMenuItemListAdmin();
     }
-    
+
     public List<MenuItem> getMenuItemListCustomer() {
-        
+
         return menuItemDao.getMenuItemListCustomer();
     }
-    
+
     public MenuItem getMenuItem(long menuItemId) {
-        
+
         return menuItemDao.getMenuItem(menuItemId);
     }
-    
+
     public void editMenuItem(MenuItem menuItem) {
         menuItemDao.modifyMenuItem(menuItem);
     }
-    
-    
-    
+
 }

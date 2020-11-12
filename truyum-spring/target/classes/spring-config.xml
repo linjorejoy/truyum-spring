@@ -95,7 +95,7 @@
 		<property name="freeDelivery" value="true" />
 	</bean>
 
-	<bean id="menuItems" class="java.util.ArrayList">
+	<bean id="menuItemList" class="java.util.ArrayList">
 		<constructor-arg>
 			<list>
 				<ref bean="sandwich" />
@@ -110,7 +110,7 @@
 	<bean id="menuItemDaoCollectionImpl"
 		class="com.cognizant.truyum.dao.MenuItemDaoCollectionImpl">
 		<property name="menuItemList">
-			<ref bean="menuItems" />
+			<ref bean="menuItemList" />
 		</property>
 	</bean>
 
@@ -120,9 +120,6 @@
 	<bean id="menuItemsInCart1" class="java.util.ArrayList">
 		<constructor-arg>
 			<list>
-				<ref bean="sandwich" />
-				<ref bean="burger" />
-				<ref bean="pizza" />
 			</list>
 		</constructor-arg>
 	</bean>

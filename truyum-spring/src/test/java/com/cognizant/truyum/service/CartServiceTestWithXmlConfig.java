@@ -3,25 +3,28 @@ package com.cognizant.truyum.service;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.junit.rules.ExpectedException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.cognizant.truyum.dao.CartEmptyException;
 import com.cognizant.truyum.model.MenuItem;
 
-public class CartServiceTest {
+public class CartServiceTestWithXmlConfig {
     CartService cartService;
+    
+    public ExpectedException exceptionRule = ExpectedException.none();
     
     @Before
     public void initializeService() {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.scan("com.cognizant.truyum");
-        context.refresh();
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         cartService = context.getBean(CartService.class);
     }
+
     
     @Test(expected = CartEmptyException.class)
     public void testGetAllCartItemThrowsExceptionEmptyCart() throws CartEmptyException {
@@ -45,6 +48,7 @@ public class CartServiceTest {
             }
         }
         assertTrue(hasSandwich);
+        
     }
     
     @Test
