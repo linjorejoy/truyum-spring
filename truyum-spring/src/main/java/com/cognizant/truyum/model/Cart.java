@@ -2,14 +2,35 @@ package com.cognizant.truyum.model;
 
 import java.util.List;
 
+/**
+ * Cart Object which stores the Object of a users Cart
+ * 
+ * @author LINJO
+ *
+ */
 public class Cart {
+    /**
+     * To hold {@code List{{@code {@link MenuItem}}} of a particular User
+     */
     private List<MenuItem> menuItemList;
+    /**
+     * To store the total price of all the {@code {@link MenuItem}} in a {@code Cart}
+     */
     private double total;
 
+    /**
+     * A No Argument Constructor for aiding in creation of beans in COnfiguration
+     * File
+     */
     public Cart() {
         super();
     }
 
+    /**
+     * Single Argument Constructor which takes 
+     * @param menuItemList as the parameter 
+     * @param menuItemList      : {@code List{@code {@link MenuItem}}}
+     */
     public Cart(List<MenuItem> menuItemList) {
         super();
         this.menuItemList = menuItemList;
