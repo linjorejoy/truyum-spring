@@ -86,6 +86,7 @@ public class CartDaoCollectionImpl implements CartDao {
      * 
      * @param userId : User Id specified in HashMap - { @link
      *               CartDaoCollectionImpl#userCarts }
+     * @return List<MenuItems> list of { @code MenuItems} 
      */
     public List<MenuItem> getAllCartItems(final long userId) throws CartEmptyException {
 

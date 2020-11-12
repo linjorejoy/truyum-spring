@@ -1,20 +1,14 @@
 package com.cognizant.truyum;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
-import org.junit.Test;
+import com.cognizant.truyum.service.CartServiceTest;
+import com.cognizant.truyum.service.MenuItemServiceTest;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-{
-    /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
+@RunWith(Suite.class)
+@SuiteClasses({CartServiceTest.class, MenuItemServiceTest.class})
+public class AppTest {
+    
 }

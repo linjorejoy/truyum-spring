@@ -17,7 +17,7 @@ public class CartServiceTest {
     
     @Before
     public void initializeService() {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.scan("com.cognizant.truyum");
         context.refresh();
         cartService = context.getBean(CartService.class);
