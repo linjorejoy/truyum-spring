@@ -177,6 +177,12 @@ public class MenuItem {
     }
 
     @Override
+    /**
+     * For comparing 2 {@code MenuItems} and are equated 
+     * based on their ID
+     * 
+     * @param obj : 
+     */
     public boolean equals(final Object obj) {
         if (this == obj)
             return true;
@@ -191,6 +197,9 @@ public class MenuItem {
     }
 
     @Override
+    /**
+     * Overridden toString method of Object Class
+     */
     public String toString() {
         return "MenuItem [id=" + id + ", name=" + name + ", price=" + price + ", active=" + active + ", dateOfLaunch="
                 + dateOfLaunch + ", category=" + category + ", freeDelivery=" + freeDelivery + "]";
