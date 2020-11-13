@@ -20,7 +20,7 @@ public class MenuItemService {
 
     /**
      * An instance to store object of
-     * {@link com.cognizant.truyum.dao.MenuItemCollectionImpl} class
+     * {@link com.cognizant.truyum.dao.MenuItemDaoCollectionImpl} class
      * 
      */
     private MenuItemDao menuItemDao;
@@ -38,7 +38,7 @@ public class MenuItemService {
      * Invokes {@link 
      * com.cognizant.truyum.dao.MenuItemDaoCollectionImpl#getMenuItemListAdmin()}
      * and return the {@link java.util.ArrayList} of
-     * {@link com.cognizant.truyum.model.MenuItem} in the view of Administrator
+     * {@link MenuItem} in the view of Administrator
      * 
      * @return
      */
@@ -51,7 +51,7 @@ public class MenuItemService {
      * Invokes {@link 
      * com.cognizant.truyum.dao.MenuItemDaoCollectionImpl#getMenuItemListCustomer()}
      * and returns the {@link java.util.ArrayList} of
-     * {@link com.cognizant.truyum.model.MenuItem} in the view of Customer
+     * {@link MenuItem} in the view of Customer
      * 
      * @return
      */
@@ -63,7 +63,7 @@ public class MenuItemService {
     /**
      * Invokes
      * {@link com.cognizant.truyum.dao.MenuItemDaoCollectionImpl#getMenuItem(long)}
-     * and return the {@link com.cognizant.truyum.model.MenuItem}
+     * and return the {@link MenuItem}
      * 
      * @param menuItemId
      * @return

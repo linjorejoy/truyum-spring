@@ -61,7 +61,7 @@ public class CartService {
      * @param userId
      * @param menuItemId
      */
-    public void removeCartitem(final long userId, final long menuItemId) {
+    public void removeCartItem(final long userId, final long menuItemId) {
         cartDao.removeCartItem(userId, menuItemId);
     }
 }

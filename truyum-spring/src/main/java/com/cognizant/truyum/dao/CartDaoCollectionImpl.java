@@ -29,6 +29,12 @@ public class CartDaoCollectionImpl implements CartDao {
      */
     private Map<Long, Cart> userCarts;
 
+    /**
+     * Getter for {@link #userCarts}
+     * 
+     * @return {@link java.util.HashMap} with {@link java.lang.Long} as key and
+     *         {@link Cart} as Value
+     */
     public Map<Long, Cart> getUserCarts() {
         return userCarts;
     }
@@ -45,9 +51,9 @@ public class CartDaoCollectionImpl implements CartDao {
     }
 
     /**
-     * Single Argument Constructor to inject Map : userCarts
+     * Single Argument Constructor to inject {@link java.util.HashMap}
      * 
-     * @param userCarts
+     * @param userCarts : {@link java.util.HashMap}
      */
     public CartDaoCollectionImpl(final Map<Long, Cart> userCarts) {
         super();
@@ -56,12 +62,10 @@ public class CartDaoCollectionImpl implements CartDao {
 
     @Override
     /**
-     * Add 
-     * {@code com.cognizant.truyum.dao.MenuItem}
-     * with Id : @param menuItemId to the cart of User with User Id :
-     * userId
+     * Add {@link MenuItem} with Id : {@param menuItemId} to
+     * the cart of User with User Id : userId
      * 
-     * @param userId     : user Id
+     * @param userId     : User Id
      * @param menuItemId : MenuItem Id
      */
     public void addCartItem(final long userId, final long menuItemId) {
@@ -84,10 +88,11 @@ public class CartDaoCollectionImpl implements CartDao {
 
     @Override
     /**
-     * To get all the { @code MenuItems} from the particular users cart
+     * To get all the {@link MenuItem} from the particular users cart
+     * 
      * @param userId : User Id specified in HashMap - { @link
      *               CartDaoCollectionImpl#userCarts }
-     * @return List<MenuItems> list of { @code MenuItems } 
+     * @return List<MenuItem> list of { @link MenuItem }
      */
     public List<MenuItem> getAllCartItems(final long userId) throws CartEmptyException {
 
@@ -108,9 +113,9 @@ public class CartDaoCollectionImpl implements CartDao {
 
     @Override
     /**
-     * Remove {@code com.cognizant.truyum.dao.MenuItem} 
-     * with Id : @param menuItemId from the cart of User with 
-     * User Id : @param userId
+     * Remove {@code com.cognizant.truyum.dao.MenuItem} with Id : {@code menuItemId}
+     * <code>menuItemId</code>
+     * from the cart of User with User Id : @param userId
      * 
      * @param userId     : user Id
      * @param menuItemId : MenuItem Id

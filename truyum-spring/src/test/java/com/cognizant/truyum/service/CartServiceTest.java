@@ -7,11 +7,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.cognizant.truyum.dao.CartDaoCollectionImpl;
 import com.cognizant.truyum.dao.CartEmptyException;
 import com.cognizant.truyum.model.MenuItem;
 
 /**
- * Test All the methods in CartDaoCollectionImpl using CartService
+ * Test All the methods in {@link CartDaoCollectionImpl}
+ *  using {@link CartService}
  * 
  * @author LINJO
  *
@@ -36,7 +38,7 @@ public class CartServiceTest {
     @Test(expected = CartEmptyException.class)
     /**
      * Test to make sure
-     * {@link com.cognizant.truyum.dao.CartDaoCollectionImpl#getAllCartItems(long)} throws a 
+     * {@link CartDaoCollectionImpl#getAllCartItems(long)} throws a 
      * {@link com.cognizant.truyum.dao.CartEmptyException} when 
      * {@link com.cognizant.truyum.model.Cart} is Empty
      * 
@@ -65,8 +67,9 @@ public class CartServiceTest {
 
         hasSandwich = false;
         cartService.addCartItem(1, 1);
-        for (MenuItem item : cartService.getAllCartItems(1)) {
+        for (final MenuItem item : cartService.getAllCartItems(1)) {
             if (item.getName().equalsIgnoreCase("Sandwich")) {
+                
                 hasSandwich = true;
             }
         }
@@ -91,7 +94,7 @@ public class CartServiceTest {
         }
         final boolean before = hasSandwich;
 
-        cartService.removeCartitem(2, 1);
+        cartService.removeCartItem(2, 1);
         hasSandwich = false;
         for (final MenuItem item : cartService.getAllCartItems(2)) {
             if (item.getName().equalsIgnoreCase("Sandwich")) {

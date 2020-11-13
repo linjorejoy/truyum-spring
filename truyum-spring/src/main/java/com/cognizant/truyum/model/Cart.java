@@ -12,15 +12,15 @@ public class Cart {
     
     /**
      * To hold {@link java.util.ArrayList} of
-     * {@link com.cognizant.truyum.model.MenuItem} of a particular User
+     * {@link MenuItem} of a particular User
      */
     private List<MenuItem> menuItemList;
     
     
     /**
      * To store the total price of all the
-     * {@link com.cognizant.truyum.model.MenuItem} in a
-     * {@link com.cognizant.truyum.model.Cart}
+     * {@link MenuItem} in a
+     * {@link Cart}
      */
     private double total;
 
@@ -36,7 +36,7 @@ public class Cart {
      * Single Argument Constructor which takes
      * 
      * @param menuItemList as the parameter
-     * @param menuItemList : {@code List{@code {@link MenuItem}}}
+     * @param menuItemList : {@link java.util.ArrayList} of z[{@link MenuItem}
      */
     public Cart(final List<MenuItem> menuItemList) {
         super();

@@ -14,8 +14,8 @@ public class DateUtil {
      * To Convert any String in dd/MM/yyyy format to 
      * {@link java.util.Date} Object
      * 
-     * @param date
-     * @return
+     * @param   date date in specified string format
+     * @return  {@link java.util.Date} Object
      */
     public Date convertToDate(final String date) {
 

@@ -23,7 +23,7 @@ public class MenuItem {
      */
     private float price;
     /**
-     * Boolean value to check if product is avilable
+     * Boolean value to check if product is available
      */
     private boolean active;
     /**
@@ -48,7 +48,7 @@ public class MenuItem {
 
     /**
      * 7-Argument constructor to create 
-     * {@link com.cognizant.truyum.model.MenuItem} object
+     * {@link MenuItem} object
      * 
      * @param id
      * @param name
@@ -179,7 +179,7 @@ public class MenuItem {
     @Override
     /**
      * For comparing 2 
-     * {@link com.cognizant.truyum.model.MenuItem}
+     * {@link MenuItem}
      *  and are equated based on their ID
      * 
      * @param obj :
@@ -199,7 +199,7 @@ public class MenuItem {
 
     @Override
     /**
-     * Overridden toString method of {@link java.lang.Object}
+     * Overridden toString method of {@link Object}
      */
     public String toString() {
         return "MenuItem [id=" + id + ", name=" + name + ", price=" + price + ", active=" + active + ", dateOfLaunch="
